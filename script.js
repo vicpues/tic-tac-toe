@@ -91,3 +91,46 @@ const board = (function() {
     };
 
 })();
+
+
+// + gameLogic object
+//   - player objects
+//   + switch player turn
+//   + see current player turn
+//   + determine if a line is a winner
+
+const logic = (function() {
+    const player1Name = "Player 1";
+    const player2Name = "Player 2";
+
+    const players = [
+        new Player(player1Name, X),
+        new Player(player2Name, O),
+    ];
+
+    let currentPlayer = 0;
+
+    function switchPlayer() {
+        currentPlayer = (currentPlayer === 0)
+            ? 1
+            : 0
+    }
+
+    function getCurrentPlayer() {
+        return players[currentPlayer];
+    }
+
+    return {
+        getCurrentPlayer,
+
+        switchPlayer,
+    }
+
+})();
+
+
+function Player(name, token) {
+    this.name = name;
+    this.token = token;
+}
+
