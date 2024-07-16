@@ -42,14 +42,29 @@ const board = (function() {
     }
 
     function readSquare(col, row) {
-        return boardArray[row][col]
+        return boardArray[row][col];
     }
-    
+
+    function readRow(row) {
+        return boardArray[row].slice();
+    }
+
+    function readCol(col) {
+        const colArray = [];
+        for (row of boardArray) {
+            colArray.push(row[col]);
+        };
+        return colArray;
+    }
+
     return {
         getBoard,
         resetBoard,
         setSquare,
         readSquare,
+
+        readRow,
+        readCol,
     };
 
 })();
