@@ -1,6 +1,6 @@
 ## Structure
 
-+ board object
++ DONE! board object
   - board array
   - create board from scratch ()
   + reset board ()

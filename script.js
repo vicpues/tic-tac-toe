@@ -1,12 +1,3 @@
-// + board object
-//   o board array
-//   o create board from scratch ()
-//   o reset board ()
-//   o set square to "x", "o" or "" 
-//   o read square
-//   - read line/across/diagonal from square
-//   + read ALL lines from a square
-
 const X = "x";
 const O = "o";
 
@@ -16,16 +7,6 @@ const board = (function() {
 
     // Init
     _createBoard();
-
-    function _createBoard() {
-        for ( let row = 0;  row < boardSize;  row++ ) {
-            const currentRow = [];
-            for (let col = 0; col < boardSize; col++) {
-                currentRow.push("");
-            };
-            boardArray.push(currentRow);
-        };
-    }
 
     function getBoard() {
         return boardArray.slice();
@@ -44,11 +25,29 @@ const board = (function() {
         return boardArray[row][col];
     }
 
-    function readRow(row) {
+    function readLines(col, row) {
+        return [
+            _readCol(col),
+            _readRow(row),
+            ..._readDiagonals(col, row)
+        ];
+    }
+
+    function _createBoard() {
+        for ( let row = 0;  row < boardSize;  row++ ) {
+            const currentRow = [];
+            for (let col = 0; col < boardSize; col++) {
+                currentRow.push("");
+            };
+            boardArray.push(currentRow);
+        };
+    }
+
+    function _readRow(row) {
         return boardArray[row].slice();
     }
 
-    function readCol(col) {
+    function _readCol(col) {
         const colArray = [];
         for (row of boardArray) {
             colArray.push(row[col]);
@@ -56,7 +55,7 @@ const board = (function() {
         return colArray;
     }
 
-    function readDiagonals(col, row) {
+    function _readDiagonals(col, row) {
         // In an n * n 2d array, the squares with n-long diagonals are:
         // Those where col == row
         // Those where col + row = n  (add 1 to compensate for 0 index)
@@ -83,23 +82,11 @@ const board = (function() {
         return diagonals;
     }
 
-    function readLines(col, row) {
-        return [
-            readCol(col),
-            readRow(row),
-            ...readDiagonals(col, row)
-        ];
-    }
-
     return {
         getBoard,
         resetBoard,
         setSquare,
         readSquare,
-
-        readRow,
-        readCol,
-        readDiagonals,
         readLines,
     };
 
