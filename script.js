@@ -1,5 +1,6 @@
 const X = "x";
 const O = "o";
+const EMPTY = "";
 
 const board = (function() {
     const boardSize = 3;
@@ -37,7 +38,7 @@ const board = (function() {
         for ( let row = 0;  row < boardSize;  row++ ) {
             const currentRow = [];
             for (let col = 0; col < boardSize; col++) {
-                currentRow.push("");
+                currentRow.push(EMPTY);
             };
             boardArray.push(currentRow);
         };
@@ -94,9 +95,9 @@ const board = (function() {
 
 
 // + gameLogic object
-//   - player objects
-//   + switch player turn
-//   + see current player turn
+//   o player objects
+//   o switch player turn
+//   o see current player turn
 //   + determine if a line is a winner
 
 const logic = (function() {
