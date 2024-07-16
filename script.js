@@ -7,6 +7,9 @@
 //   - read line/across/diagonal from square
 //   + read ALL lines from a square
 
+const X = "x";
+const O = "o";
+
 const board = (function() {
     const numberOfRows = 3;
     const numberOfColumns = 3;
