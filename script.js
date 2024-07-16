@@ -3,7 +3,7 @@
 //   o create board from scratch ()
 //   o reset board ()
 //   o set square to "x", "o" or "" 
-//   + read square
+//   o read square
 //   - read line/across/diagonal from square
 //   + read ALL lines from a square
 
@@ -37,11 +37,16 @@ const board = (function() {
     function setSquare(col, row, string) {
         boardArray[row][col] = string;
     }
+
+    function readSquare(col, row) {
+        return boardArray[row][col]
+    }
     
     return {
         getBoard,
         resetBoard,
         setSquare,
+        readSquare,
     };
 
 })();
