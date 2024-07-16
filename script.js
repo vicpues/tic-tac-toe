@@ -83,6 +83,14 @@ const board = (function() {
         return diagonals;
     }
 
+    function readLines(col, row) {
+        return [
+            readCol(col),
+            readRow(row),
+            ...readDiagonals(col, row)
+        ];
+    }
+
     return {
         getBoard,
         resetBoard,
@@ -92,6 +100,7 @@ const board = (function() {
         readRow,
         readCol,
         readDiagonals,
+        readLines,
     };
 
 })();
