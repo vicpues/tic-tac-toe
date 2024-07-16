@@ -11,17 +11,16 @@ const X = "x";
 const O = "o";
 
 const board = (function() {
-    const numberOfRows = 3;
-    const numberOfColumns = 3;
+    const boardSize = 3;
     const boardArray = [];
 
     // Init
     _createBoard();
 
     function _createBoard() {
-        for ( let row = 0;  row < numberOfRows;  row++ ) {
+        for ( let row = 0;  row < boardSize;  row++ ) {
             const currentRow = [];
-            for (let col = 0; col < numberOfColumns; col++) {
+            for (let col = 0; col < boardSize; col++) {
                 currentRow.push("");
             };
             boardArray.push(currentRow);
