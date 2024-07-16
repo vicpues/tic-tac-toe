@@ -56,6 +56,33 @@ const board = (function() {
         return colArray;
     }
 
+    function readDiagonals(col, row) {
+        // In an n * n 2d array, the squares with n-long diagonals are:
+        // Those where col == row
+        // Those where col + row = n  (add 1 to compensate for 0 index)
+        const diagonals = [];
+
+        // Diagonal starting at (0, 0), all squares are [i][i]
+        if (row === col) {
+            const topLeftDiagonal = [];
+            for (let i = 0;  i < boardSize;  i++) {
+                topLeftDiagonal.push(boardArray[i][i]);
+            };
+            diagonals.push(topLeftDiagonal);
+        };
+
+        // Diagonal starting at (n-1, 0), all squares are i + i + 1 == n
+        if ( (row + col + 1) === boardSize ) {
+            const topRightDiagonal = [];
+            for (let i = 0;  i < boardSize;  i++) {
+                topRightDiagonal.push(boardArray[boardSize - (i+1)][i])
+            };
+            diagonals.push(topRightDiagonal);
+        };
+
+        return diagonals;
+    }
+
     return {
         getBoard,
         resetBoard,
@@ -64,6 +91,7 @@ const board = (function() {
 
         readRow,
         readCol,
+        readDiagonals,
     };
 
 })();
