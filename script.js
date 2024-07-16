@@ -13,9 +13,9 @@ const board = (function() {
     const boardArray = [];
 
     // Init
-    createBoard();
+    _createBoard();
 
-    function createBoard() {
+    function _createBoard() {
         for ( let row = 0;  row < numberOfRows;  row++ ) {
             const currentRow = [];
             for (let col = 0; col < numberOfColumns; col++) {
@@ -24,13 +24,19 @@ const board = (function() {
             boardArray.push(currentRow);
         };
     }
-
+    
     function getBoard() {
         return boardArray.slice();
     }
 
+    function resetBoard() {
+        boardArray.length = 0;
+        _createBoard();
+    }
+    
     return {
-        getBoard
+        getBoard,
+        resetBoard,
     };
 
 })();
