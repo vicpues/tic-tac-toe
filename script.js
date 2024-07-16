@@ -1,8 +1,8 @@
 // + board object
-//   - board array
-//   - create board from scratch ()
-//   + reset board ()
-//   + set square to "x", "o" or "" 
+//   o board array
+//   o create board from scratch ()
+//   o reset board ()
+//   o set square to "x", "o" or "" 
 //   + read square
 //   - read line/across/diagonal from square
 //   + read ALL lines from a square
@@ -24,7 +24,7 @@ const board = (function() {
             boardArray.push(currentRow);
         };
     }
-    
+
     function getBoard() {
         return boardArray.slice();
     }
@@ -33,10 +33,15 @@ const board = (function() {
         boardArray.length = 0;
         _createBoard();
     }
+
+    function setSquare(col, row, string) {
+        boardArray[row][col] = string;
+    }
     
     return {
         getBoard,
         resetBoard,
+        setSquare,
     };
 
 })();
