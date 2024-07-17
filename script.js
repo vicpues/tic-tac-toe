@@ -1,7 +1,11 @@
 const X = "x";
 const O = "o";
 const EMPTY = "";
+
 const boardSize = 3;
+const player1Name = "Player 1";
+const player2Name = "Player 2";
+
 
 const board = (function() {
     const boardArray = [];
@@ -104,30 +108,49 @@ const board = (function() {
 //   + determine if a line is a winner
 
 const logic = (function() {
-    const player1Name = "Player 1";
-    const player2Name = "Player 2";
 
     const players = [
         new Player(player1Name, X),
         new Player(player2Name, O),
     ];
 
-    let currentPlayer = 0;
+    let currentIndex = 0;
 
-    function switchPlayer() {
-        currentPlayer = (currentPlayer === 0)
+    function _switchPlayer() {
+        currentIndex = (currentIndex === 0)
             ? 1
             : 0
     }
 
     function getCurrentPlayer() {
-        return players[currentPlayer];
+        return players[currentIndex];
+    }
+
+    function moveHasWon(col, row) {
+        const lines = board.readLines(col, row);
+        for (let line in lines) {
+            if ( lines[line]  &&  _arrayIsWinner(lines[line]) ) {
+                return true
+            };
+        };
+        return false;
+    }
+
+    function _arrayIsWinner(arr) {
+        for (let square of arr) {
+            if (square !== getCurrentPlayer().token) {
+                return false;
+            };
+        };
+        return true;
     }
 
     return {
         getCurrentPlayer,
+        moveHasWon,
 
-        switchPlayer,
+        _arrayIsWinner,
+        _switchPlayer,
     }
 
 })();
