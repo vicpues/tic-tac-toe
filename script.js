@@ -1,6 +1,6 @@
 const X = "x";
 const O = "o";
-const EMPTY = "";
+const EMPTY = "_";
 
 const INVALID = "invalid";
 const WIN = "win";
@@ -167,6 +167,26 @@ const logic = (function() {
         _switchPlayer,
         _arrayIsWinner,
     }
+
+})();
+
+
+const debug = (function(){
+
+    // Init
+    _printBoard();
+
+    function _printBoard() {
+        const output = []
+        for (let row of board.getBoard()) {
+            output.push(row.join("  ") + "\n")
+        };
+        console.log(output.join(""))
+    }
+
+    return {
+        _printBoard,
+    };
 
 })();
 
