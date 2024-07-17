@@ -171,10 +171,24 @@ const logic = (function() {
 })();
 
 
-const debug = (function(){
+const debug = function(){
 
     // Init
-    _printBoard();
+    _mainLoop();
+
+    `
+    Main loop:
+    - print board
+    - ask {currentPlayer} input
+    - make move and store result in variable
+    - if INVALID ask input again
+    - if WON display victory message and ask to reset board
+    - if DRAW display message and ask to reset board
+    `
+
+    function _mainLoop() {
+        _printBoard();
+    }
 
     function _printBoard() {
         const output = []
@@ -185,10 +199,11 @@ const debug = (function(){
     }
 
     return {
+        _mainLoop,
         _printBoard,
     };
 
-})();
+};
 
 
 function Player(name, token) {
@@ -196,3 +211,4 @@ function Player(name, token) {
     this.token = token;
 }
 
+debug();
