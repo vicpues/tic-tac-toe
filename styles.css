@@ -26,3 +26,16 @@ input, button, textarea, select {
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
+
+/* Top level stuff */
+
+:root {
+  --light: #F6F7EB;
+  --dark: #444545;
+  --green: #96A13A;
+  --red: #E94F37;
+  --orange: #EE964B;
+
+  background-color: var(--light);
+  color: var(--dark);
+}
