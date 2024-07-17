@@ -1,9 +1,9 @@
 const X = "x";
 const O = "o";
 const EMPTY = "";
+const boardSize = 3;
 
 const board = (function() {
-    const boardSize = 3;
     const boardArray = [];
 
     // Init
@@ -27,11 +27,11 @@ const board = (function() {
     }
 
     function readLines(col, row) {
-        return [
-            _readCol(col),
-            _readRow(row),
+        return {
+            col: _readCol(col),
+            row: _readRow(row),
             ..._readDiagonals(col, row)
-        ];
+        };
     }
 
     function _createBoard() {
@@ -60,24 +60,27 @@ const board = (function() {
         // In an n * n 2d array, the squares with n-long diagonals are:
         // Those where col == row
         // Those where col + row = n  (add 1 to compensate for 0 index)
-        const diagonals = [];
+        const diagonals = {
+            topRightDiagonal: null,
+            topLeftDiagonal: null,
+        };
 
         // Diagonal starting at (0, 0), all squares are [i][i]
         if (row === col) {
-            const topLeftDiagonal = [];
+            const diagonal = [];
             for (let i = 0;  i < boardSize;  i++) {
-                topLeftDiagonal.push(boardArray[i][i]);
+                diagonal.push(boardArray[i][i]);
             };
-            diagonals.push(topLeftDiagonal);
+            diagonals.topLeftDiagonal = diagonal;
         };
 
         // Diagonal starting at (n-1, 0), all squares are i + i + 1 == n
         if ( (row + col + 1) === boardSize ) {
-            const topRightDiagonal = [];
+            const diagonal = [];
             for (let i = 0;  i < boardSize;  i++) {
-                topRightDiagonal.push(boardArray[boardSize - (i+1)][i])
+                diagonal.push(boardArray[boardSize - (i+1)][i])
             };
-            diagonals.push(topRightDiagonal);
+            diagonals.topRightDiagonal = diagonal;
         };
 
         return diagonals;

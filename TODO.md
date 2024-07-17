@@ -24,3 +24,5 @@
   + display board
   + ask player[n] input
  
+event goes out:
+  check that 
