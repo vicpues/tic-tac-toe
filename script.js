@@ -2,6 +2,10 @@ const X = "x";
 const O = "o";
 const EMPTY = "";
 
+const INVALID = "invalid";
+const WIN = "win";
+const DRAW = "draw";
+
 const boardSize = 3;
 const player1Name = "Player 1";
 const player2Name = "Player 2";
@@ -101,12 +105,6 @@ const board = (function() {
 })();
 
 
-// + gameLogic object
-//   o player objects
-//   o switch player turn
-//   o see current player turn
-//   + determine if a line is a winner
-
 const logic = (function() {
 
     const players = [
@@ -114,16 +112,28 @@ const logic = (function() {
         new Player(player2Name, O),
     ];
 
-    let currentIndex = 0;
-
-    function _switchPlayer() {
-        currentIndex = (currentIndex === 0)
-            ? 1
-            : 0
-    }
+    let currentTurn = 0;
 
     function getCurrentPlayer() {
-        return players[currentIndex];
+        return players[currentTurn % 2];
+    }
+
+    function makeMove(col, row) {
+        if (board.readSquare(col, row) !== EMPTY) {
+            return INVALID;
+        };
+        
+        board.setSquare(col, row, getCurrentPlayer().token);
+
+        if (moveHasWon(col, row)) {
+            return WIN;
+        };
+
+        if (currentTurn === (boardSize ** 2) - 1 ){
+            return DRAW;
+        };
+
+        _switchPlayer();
     }
 
     function moveHasWon(col, row) {
@@ -134,6 +144,10 @@ const logic = (function() {
             };
         };
         return false;
+    }
+
+    function _switchPlayer() {
+        currentTurn++
     }
 
     function _arrayIsWinner(arr) {
@@ -147,10 +161,11 @@ const logic = (function() {
 
     return {
         getCurrentPlayer,
+        makeMove,
         moveHasWon,
 
-        _arrayIsWinner,
         _switchPlayer,
+        _arrayIsWinner,
     }
 
 })();
