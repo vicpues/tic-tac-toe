@@ -163,9 +163,6 @@ const logic = (function() {
         getCurrentPlayer,
         makeMove,
         moveHasWon,
-
-        _switchPlayer,
-        _arrayIsWinner,
     }
 
 })();
@@ -221,5 +218,3 @@ function Player(name, token) {
     this.name = name;
     this.token = token;
 }
-
-debug();
