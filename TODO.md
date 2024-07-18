@@ -1,6 +1,6 @@
 ## To-do:
 
-- [ ]   General document markup
+- [ ]   General document markup and styling
   - [ ] Main game module
   - [ ] Reset game button
   - [ ] Player name display and input
