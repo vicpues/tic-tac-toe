@@ -11,7 +11,7 @@
   - [x] Play again
 
 - [ ]   Style css
-  - [ ] Put pen-and-notebook css::after in player name input on hover  
+  - [ ] Put pen-and-notebook css::after in player name input on hover 
 
 - [ ]   JS interface for the DOM
   - [ ] Cache DOM
@@ -28,6 +28,7 @@
   - [ ] Play again
 
 - [ ]   Finishing touches
+  - [ ] Reduce image jittering on page load
   - [ ] Write readme
   - [ ] Check credits
   - [ ] Publish live demo

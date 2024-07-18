@@ -15,14 +15,22 @@
       <div class="player-info">
         <div class="player">
           <img class="player-info-icon red" src="./assets/cross.svg" alt="Cross">
-          <input type="text" id="player-1-name" value="Player 1">
-          <p id="player-1-score">0</p>
+          <div class="name-and-score">
+            <div class="name-wrapper">
+              <input type="text" id="player-1-name" class="player-name" value="Player 1" title="Edit name" maxlength="8">
+            </div>
+            <p class="player-score">Score:<span id="player-1-score">0</span></p>
+          </div>
         </div>
 
         <div class="player">
           <img class="player-info-icon green" src="./assets/circle.svg" alt="Circle">
-          <input type="text" id="player-2-name" value="Player 2"">
-          <p id="player-2-score">0</p>
+          <div class="name-and-score">
+            <div class="name-wrapper">
+              <input type="text" id="player-2-name" class="player-name" value="Player 2" title="Edit name" maxlength="8">
+            </div>
+            <p class="player-score">Score:<span id="player-2-score">0</span></p>
+          </div>
         </div>
       </div>
 
