@@ -1,10 +1,10 @@
 ## To-do:
 
-- [ ]   General document markup and styling
+- [x]   General document markup and styling
   - [x] Main game module
   - [x] Player name display and input
   - [x] Player score
-  - [ ] Way to show the current player (switch between x and o)
+  - [x] Way to show the current player (switch between x and o)
   - [x] Board and cells
   - [x] Status display (You've won, invalid move etc...)
   - [x] Reset game
