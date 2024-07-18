@@ -1,28 +1,30 @@
-## Structure
+## To-do:
 
-+ DONE! board object
-  - board array
-  - create board from scratch ()
-  + reset board ()
-  + set square to "x", "o" or "" 
-  + read square
-  - read line/across/diagonal from square
-  + read ALL lines from a square
+- [ ]   General document markup
+  - [ ] Main game module
+  - [ ] Reset game button
+  - [ ] Player name display and input
+  - [ ] Player score
+  - [ ] Reset game
+  - [ ] Way to show the current player (switch between x and o)
+  - [ ] Status display (You've won, invalid move etc...)
+  - [ ] Board and cells
+  - [ ] Play again
 
-+ gameLogic object
-  - player objects
-  + switch turn
-  + determine if a line is a winner
+- [ ]   JS interface for the DOM
+  - [ ] Render the board
+  - [ ] Render current player
+  - [ ] Get and set player name
+  - [ ] Handle a click on a cell
+  - [ ] Update status message
+  - [ ] Update player score
+  - [ ] Reset player score
+  - [ ] Update current player symbol
+  - [ ] Highlight winning line
+  - [ ] Play again
 
-+ eventHandler
-  - events array
-  + sub
-  + unsub
-  + emit
-
-+ console debugger
-  + display board
-  + ask player[n] input
- 
-event goes out:
-  check that 
+- [ ]   Finishing touches
+  - [ ] Write readme
+  - [ ] Check credits
+  - [ ] Publish live demo
+  - [ ] Link live demo in footer
