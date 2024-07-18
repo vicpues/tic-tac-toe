@@ -1,18 +1,22 @@
 ## To-do:
 
 - [ ]   General document markup and styling
-  - [ ] Main game module
-  - [ ] Reset game button
-  - [ ] Player name display and input
-  - [ ] Player score
-  - [ ] Reset game
+  - [x] Main game module
+  - [x] Player name display and input
+  - [x] Player score
   - [ ] Way to show the current player (switch between x and o)
-  - [ ] Status display (You've won, invalid move etc...)
-  - [ ] Board and cells
-  - [ ] Play again
+  - [x] Board and cells
+  - [x] Status display (You've won, invalid move etc...)
+  - [x] Reset game
+  - [x] Play again
+
+- [ ]   Style css
+  - [ ] Put pen-and-notebook css::after in player name input on hover  
 
 - [ ]   JS interface for the DOM
-  - [ ] Render the board
+  - [ ] Cache DOM
+  - [ ] Bind events
+  - [ ] Render the board with classes
   - [ ] Render current player
   - [ ] Get and set player name
   - [ ] Handle a click on a cell

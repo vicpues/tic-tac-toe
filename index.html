@@ -10,6 +10,44 @@
 <body>
   <h1>Tic-tac-toe</h1>
 
+  <main>
+    <div id="tic-tac-toe">
+      <div class="player-info">
+        <div class="player">
+          <img class="player-info-icon red" src="./assets/cross.svg" alt="Cross">
+          <input type="text" id="player-1-name" value="Player 1">
+          <p id="player-1-score">0</p>
+        </div>
+
+        <div class="player">
+          <img class="player-info-icon green" src="./assets/circle.svg" alt="Circle">
+          <input type="text" id="player-2-name" value="Player 2"">
+          <p id="player-2-score">0</p>
+        </div>
+      </div>
+
+      <div id="current-player"></div>
+
+      <div id="board">
+        <button id="cell-1" class="game-cell"></button>
+        <button id="cell-2" class="game-cell"></button>
+        <button id="cell-3" class="game-cell"></button>
+        <button id="cell-4" class="game-cell"></button>
+        <button id="cell-5" class="game-cell"></button>
+        <button id="cell-6" class="game-cell"></button>
+        <button id="cell-7" class="game-cell"></button>
+        <button id="cell-8" class="game-cell"></button>
+        <button id="cell-9" class="game-cell"></button>
+      </div>
+
+      <p id="status-message"></p>
+
+      <button id="play-again">Next round</button>
+
+      <button id="reset-button">Reset to zero</button>
+    </div>
+  </main>
+
   <footer>
     <a href="https://github.com/vicpues" target="_blank" rel="noreferrer">
       <img src="./assets/githubLogo.svg" alt="Github logo" id="github-icon" class="footer-img">
