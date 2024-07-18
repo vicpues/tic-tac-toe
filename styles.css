@@ -34,6 +34,8 @@ p, h1, h2, h3, h4, h5, h6 {
   --light-filter: invert(99%) sepia(22%) saturate(295%) hue-rotate(12deg) brightness(101%) contrast(94%);;
   --dark: #444545;
   --dark-filter: invert(25%) sepia(5%) saturate(98%) hue-rotate(131deg) brightness(94%) contrast(88%);
+  --grey: #9A8C98;
+  --grey-filter: brightness(0) saturate(100%) invert(63%) sepia(10%) saturate(343%) hue-rotate(257deg) brightness(90%) contrast(89%);;
   --green: #96A13A;
   --green-filter: invert(62%) sepia(34%) saturate(717%) hue-rotate(27deg) brightness(91%) contrast(85%);
   --red: #E94F37;
@@ -145,3 +147,45 @@ p.player-score {
 p.player-score > span {
   margin-left: .5em;
 }
+
+#current-player {
+  --half-padding: .4em;
+  background-color: var(--dark);
+  display: inline-flex;
+  padding: calc(var(--half-padding) * 2);
+  position: relative;
+  border-radius: calc(var(--half-padding) * 2);
+}
+
+#current-player::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  top: var(--half-padding);
+  bottom: var(--half-padding);
+  border-radius: var(--half-padding);
+  transition: all .3s;
+}
+
+#current-player::before {
+  background-color: var(--red);
+  left: var(--half-padding);
+}
+
+#current-player.o-turn::before {
+  background-color: var(--green);
+  left: calc(50% - var(--half-padding));
+  right: var(--half-padding);
+}
+
+.current-player-img {
+  height: 3em;
+  width: 8em;;
+  filter: var(--light-filter);
+}
+
+#current-player:not(.o-turn) > .o,
+#current-player.o-turn > .x {
+  filter: var(--grey-filter);
+}
+
