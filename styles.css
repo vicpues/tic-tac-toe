@@ -189,3 +189,27 @@ p.player-score > span {
   filter: var(--grey-filter);
 }
 
+/* Board */
+
+#board {
+  margin: 1rem auto;
+  --board-size: calc(10vw + 23rem);
+  --board-gap: 1rem;
+  --board-padding: calc(1.3 * var(--board-gap));
+  --board-borders: 2px solid var(--dark);
+  --board-corners: 1rem;
+
+  display: grid;
+  height: var(--board-size);
+  width: var(--board-size);
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  padding: var(--board-padding);
+  gap: var(--board-gap);
+  border: var(--board-borders);
+  border-radius: calc(var(--board-gap) + var(--board-corners));
+}
+
+#board > * {
+  border: var(--board-borders);
+  border-radius: var(--board-corners);
+}
