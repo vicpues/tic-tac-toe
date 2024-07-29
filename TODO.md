@@ -11,6 +11,7 @@
   - [x] Play again
 
 - [ ]   Style css
+  - [ ] Tighten up layout spacing
   - [x] Put pen-and-notebook css::after in player name input on hover 
 
 - [ ]   JS interface for the DOM
@@ -28,6 +29,7 @@
   - [ ] Play again
 
 - [ ]   Finishing touches
+  - [ ] Improve responsiveness
   - [ ] Reduce image jittering on page load
   - [ ] Write readme
   - [ ] Check credits
