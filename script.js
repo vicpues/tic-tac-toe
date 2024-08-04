@@ -171,6 +171,7 @@ const logic = (function() {
 const interface = (function(doc) {
     const dom = _cacheDom();
     renderBoard();
+    _renderPlayer();
 
     function renderBoard() {
         const squares = board.getBoard().flat();
@@ -190,8 +191,14 @@ const interface = (function(doc) {
         };
     }
 
-    function renderPlayer() {
-        const player = logic.getCurrentPlayer
+    function _renderPlayer() {
+        const oTurnClass = "o-turn";
+        const currentPlayer = logic.getCurrentPlayer();
+        if (currentPlayer.token === O) {
+            dom.currentPlayer.classList.add(oTurnClass);
+        } else {
+            dom.currentPlayer.classList.remove(oTurnClass);
+        };
     }
 
     function _cacheDom() {
@@ -212,7 +219,7 @@ const interface = (function(doc) {
     return {
         renderBoard,
 
-        renderPlayer,
+        _renderPlayer,
         dom,
     };
 
