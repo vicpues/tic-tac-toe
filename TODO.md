@@ -10,7 +10,7 @@
   - [x] Reset game
   - [x] Play again
 
-- [ ]   Style css
+- [x]   Style css
   - [ ] Tighten up layout spacing
   - [x] Put pen-and-notebook css::after in player name input on hover 
 
