@@ -170,6 +170,7 @@ const logic = (function() {
 
 const interface = (function(doc) {
     const dom = _cacheDom();
+    _bindEvents();
     renderBoard();
     _renderPlayer();
 
@@ -189,6 +190,22 @@ const interface = (function(doc) {
                 cell.classList.remove(oClass);
             };
         };
+    }
+
+    function _bindEvents() {
+        for (cell of dom.cells) {
+            cell.addEventListener("click", moveEvent);
+        };
+    }
+
+    function moveEvent(event) {
+        console.log(event.target);
+        logic.makeMove(
+            event.target.dataset.x,
+            event.target.dataset.y
+        );
+        renderBoard();
+        _renderPlayer();
     }
 
     function _renderPlayer() {

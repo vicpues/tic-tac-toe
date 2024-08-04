@@ -20,7 +20,7 @@
   - [x] Render the board with classes
   - [x] Render current player
   - [ ] Get and set player name
-  - [ ] Handle a click on a cell
+  - [x] Handle a click on a cell
   - [ ] Update status message
   - [ ] Update player score
   - [ ] Reset player score
