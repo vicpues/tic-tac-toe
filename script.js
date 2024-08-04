@@ -170,10 +170,28 @@ const logic = (function() {
 
 const interface = (function(doc) {
     const dom = _cacheDom();
-    _renderBoard();
+    renderBoard();
 
-    function _renderBoard() {
-        
+    function renderBoard() {
+        const squares = board.getBoard().flat();
+        const xClass = "x-square";
+        const oClass = "o-square";
+        for (let i = 0;  i < squares.length;  i++) {
+            const value = squares[i];
+            const cell = dom.cells[i];
+            if (value === X) {
+                cell.classList.add(xClass);
+            } else if (value === O) {
+                cell.classList.add(oClass);
+            } else {
+                cell.classList.remove(xClass);
+                cell.classList.remove(oClass);
+            };
+        };
+    }
+
+    function renderPlayer() {
+        const player = logic.getCurrentPlayer
     }
 
     function _cacheDom() {
@@ -187,11 +205,15 @@ const interface = (function(doc) {
             statusMessage: doc.querySelector("#status-message"),
             playAgain: doc.querySelector("#play-again"),
             resetButton: doc.querySelector("#reset-button"),
+            cells: Array.from(doc.querySelectorAll(".game-cell"))
         }
     }
 
     return {
+        renderBoard,
 
+        renderPlayer,
+        dom,
     };
 
 })(document);

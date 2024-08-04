@@ -214,6 +214,30 @@ p.player-score > span {
   border-radius: var(--board-corners);
 }
 
+/* Squares */
+
+.game-cell {
+  position: relative; 
+}
+
+.game-cell::before {
+  content: "";
+  position: absolute;
+  inset: 1em;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.x-square::before {
+  background-image: url("./assets/cross.svg");
+  filter: var(--red-filter);
+}
+
+.o-square::before {
+  background-image: url("./assets/circle.svg");
+  filter: var(--green-filter);
+}
+
 /* Round buttons and message*/
 
 .status-text {
