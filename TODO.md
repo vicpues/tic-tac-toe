@@ -18,7 +18,7 @@
   - [x] Cache DOM
   - [ ] Bind events
   - [x] Render the board with classes
-  - [ ] Render current player
+  - [x] Render current player
   - [ ] Get and set player name
   - [ ] Handle a click on a cell
   - [ ] Update status message
