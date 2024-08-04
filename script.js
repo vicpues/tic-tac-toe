@@ -168,6 +168,35 @@ const logic = (function() {
 })();
 
 
+const interface = (function(doc) {
+    const dom = _cacheDom();
+    _renderBoard();
+
+    function _renderBoard() {
+        
+    }
+
+    function _cacheDom() {
+        return {
+            playerOneInput: doc.querySelector("#player-1-name"),
+            playerTwoInput: doc.querySelector("#player-2-name"),
+            playerOneScore: doc.querySelector("#player-1-score"),
+            playerTwoScore: doc.querySelector("#player-2-score"),
+            currentPlayer: doc.querySelector("#current-player"),
+            board: doc.querySelector("#board"),
+            statusMessage: doc.querySelector("#status-message"),
+            playAgain: doc.querySelector("#play-again"),
+            resetButton: doc.querySelector("#reset-button"),
+        }
+    }
+
+    return {
+
+    };
+
+})(document);
+
+
 const debug = function(){
     // Init
     _mainLoop();

@@ -15,7 +15,7 @@
   - [x] Put pen-and-notebook css::after in player name input on hover 
 
 - [ ]   JS interface for the DOM
-  - [ ] Cache DOM
+  - [x] Cache DOM
   - [ ] Bind events
   - [ ] Render the board with classes
   - [ ] Render current player
