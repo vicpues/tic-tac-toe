@@ -132,8 +132,6 @@ const logic = (function() {
         if (currentTurn === (boardSize ** 2) - 1 ){
             return DRAW;
         };
-
-        _switchPlayer();
     }
 
     function moveHasWon(col, row) {
@@ -146,7 +144,7 @@ const logic = (function() {
         return false;
     }
 
-    function _switchPlayer() {
+    function switchPlayer() {
         currentTurn++
     }
 
@@ -163,6 +161,7 @@ const logic = (function() {
         getCurrentPlayer,
         makeMove,
         moveHasWon,
+        switchPlayer,
     }
 
 })();
@@ -199,13 +198,33 @@ const interface = (function(doc) {
     }
 
     function moveEvent(event) {
-        console.log(event.target);
-        logic.makeMove(
+        const status = logic.makeMove(
             event.target.dataset.x,
             event.target.dataset.y
         );
+
         renderBoard();
-        _renderPlayer();
+
+        if (!status) {
+            logic.switchPlayer();
+            _renderPlayer();
+        } else if (status !== INVALID) {
+            gameEnd(status);
+        };
+    }
+
+    function gameEnd(status) {
+        let message;
+        if (status === WIN) {
+            message = `${logic.getCurrentPlayer().name} wins this round!`;
+        } else if (status === DRAW) {
+            message = `It's a draw!`;
+        };
+        dom.statusMessage.textContent = message;
+    }
+
+    function clearStatus() {
+        dom.statusMessage.textContent = "";
     }
 
     function _renderPlayer() {
@@ -292,4 +311,9 @@ const debug = function(){
 function Player(name, token) {
     this.name = name;
     this.token = token;
+    this.score = 0;
+
+    this.addPoint = function() {
+        this.score++
+    };
 }

@@ -218,6 +218,7 @@ p.player-score > span {
 
 .game-cell {
   position: relative; 
+  cursor: pointer;
 }
 
 .game-cell::before {
@@ -244,8 +245,12 @@ p.player-score > span {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: .5rem;
+  gap: .8rem;
   margin-bottom: 1rem;
+}
+
+#status-message {
+  height: 1em;
 }
 
 .round-button {
