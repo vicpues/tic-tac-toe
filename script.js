@@ -145,7 +145,21 @@ const logic = (function() {
     }
 
     function switchPlayer() {
-        currentTurn++
+        currentTurn++;
+    }
+
+    function givePoint() {
+        getCurrentPlayer().addPoint();
+    }
+
+    function getScores() {
+        return [players[0].score, players[1].score]
+    }
+
+    function resetScores() {
+        for (let player of players) {
+            player.resetScore();
+        } 
     }
 
     function _arrayIsWinner(arr) {
@@ -162,6 +176,7 @@ const logic = (function() {
         makeMove,
         moveHasWon,
         switchPlayer,
+        getScores,
     }
 
 })();
@@ -217,10 +232,18 @@ const interface = (function(doc) {
         let message;
         if (status === WIN) {
             message = `${logic.getCurrentPlayer().name} wins this round!`;
+            logic.getCurrentPlayer().addPoint();
+            updateScore();
         } else if (status === DRAW) {
             message = `It's a draw!`;
         };
         dom.statusMessage.textContent = message;
+    }
+
+    function updateScore() {
+        const scores = logic.getScores();
+        dom.playerOneScore.textContent = scores[0];
+        dom.playerTwoScore.textContent = scores[1];
     }
 
     function clearStatus() {
@@ -316,4 +339,8 @@ function Player(name, token) {
     this.addPoint = function() {
         this.score++
     };
+
+    this.resetScore = function() {
+        this.score = 0;
+    }
 }

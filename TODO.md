@@ -22,7 +22,7 @@
   - [ ] Get and set player name
   - [x] Handle a click on a cell
   - [x] Update status message
-  - [ ] Update player score
+  - [x] Update player score
   - [ ] Reset player score
   - [ ] Update current player symbol
   - [ ] Highlight winning line
