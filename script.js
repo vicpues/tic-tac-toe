@@ -320,52 +320,6 @@ const interface = (function(doc) {
 })(document);
 
 
-const debug = function(){
-    // Init
-    _mainLoop();
-
-    function _mainLoop() {
-        while (true) {
-            _printBoard();
-            const input = _askInput();
-            const result = logic.makeMove(input.col, input.row);
-
-            if (result === INVALID) {
-                console.log("That square is already taken, try again");
-            };
-
-            if (result === WIN) {
-                _printBoard();
-                alert(`The game is over! \n ${logic.getCurrentPlayer().token} won!`);
-                break;
-            };
-
-            if (result === DRAW) {
-                _printBoard();
-                alert(`The game is over! \n It was a draw!`);
-                break;
-            }
-        }
-    }
-
-    function _printBoard() {
-        const output = []
-        for (let row of board.getBoard()) {
-            output.push(row.join("  ") + "\n")
-        };
-        console.log(output.join("") + "\n")
-    }
-
-    function _askInput() {
-        const firstLine = `It's ${logic.getCurrentPlayer().token}'s turn\n`;
-        const col = Number(prompt(firstLine + "Pick a column"));
-        const row = Number(prompt(firstLine + "Pick a row"));
-        return { row, col };
-    }
-
-};
-
-
 function Player(name, token) {
     this.name = name;
     this.token = token;
