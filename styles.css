@@ -219,6 +219,17 @@ p.player-score > span {
 .game-cell {
   position: relative; 
   cursor: pointer;
+  transition: all .08s;
+}
+
+.game-cell.empty:hover {
+  scale: 105%;
+  box-shadow: inset 0 0 1em rgba(244, 255, 97, 0.504);
+}
+
+.x-square,
+.o-square {
+  cursor: default;
 }
 
 .game-cell::before {

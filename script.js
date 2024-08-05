@@ -200,14 +200,18 @@ const interface = (function(doc) {
         const squares = board.getBoard().flat();
         const xClass = "x-square";
         const oClass = "o-square";
+        const emptyClass = "empty";
         for (let i = 0;  i < squares.length;  i++) {
             const value = squares[i];
             const cell = dom.cells[i];
             if (value === X) {
                 cell.classList.add(xClass);
+                cell.classList.remove(emptyClass);
             } else if (value === O) {
                 cell.classList.add(oClass);
+                cell.classList.remove(emptyClass);
             } else {
+                cell.classList.add(emptyClass);
                 cell.classList.remove(xClass);
                 cell.classList.remove(oClass);
             };
@@ -216,7 +220,7 @@ const interface = (function(doc) {
 
     function _bindEvents() {
         for (cell of dom.cells) {
-            cell.addEventListener("click", moveEvent);
+            cell.addEventListener("mousedown", moveEvent);
         };
         dom.playAgain.addEventListener("click", nextRound);
         dom.resetButton.addEventListener("click", resetToZero);
