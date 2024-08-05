@@ -16,7 +16,7 @@
 
 - [ ]   JS interface for the DOM
   - [x] Cache DOM
-  - [ ] Bind events
+  - [x] Bind events
   - [x] Render the board with classes
   - [x] Render current player
   - [x] Get and set player name
