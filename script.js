@@ -148,10 +148,6 @@ const logic = (function() {
         currentTurn++;
     }
 
-    function givePoint() {
-        getCurrentPlayer().addPoint();
-    }
-
     function getScores() {
         return [players[0].score, players[1].score]
     }
@@ -175,6 +171,10 @@ const logic = (function() {
         return true;
     }
 
+    function changePlayerName(index, newName) {
+        players[index].changeOwnNameTo(newName);
+    }
+
     return {
         getCurrentPlayer,
         makeMove,
@@ -183,6 +183,7 @@ const logic = (function() {
         resetTurn,
         getScores,
         resetScores,
+        changePlayerName,
     }
 
 })();
@@ -219,6 +220,12 @@ const interface = (function(doc) {
         };
         dom.playAgain.addEventListener("click", nextRound);
         dom.resetButton.addEventListener("click", resetToZero);
+        dom.playerOneInput.addEventListener("focusout", updateNameFactory(0));
+        dom.playerOneInput.addEventListener("keydown", keyPressed)
+        dom.playerTwoInput.addEventListener("focusout", updateNameFactory(1));
+        dom.playerTwoInput.addEventListener("keydown", keyPressed);
+
+
     }
 
     function moveEvent(event) {
@@ -267,7 +274,7 @@ const interface = (function(doc) {
     function nextRound() {
         if (roundIsOver) {
             resetRound();
-        }
+        };
     }
 
     function resetToZero() {
@@ -283,6 +290,25 @@ const interface = (function(doc) {
         clearStatus();
         renderBoard();
         _renderPlayer();
+    }
+
+    function updateNameFactory(playerNum) {
+        let inputElement;
+        if (playerNum === 0) {
+            inputElement = dom.playerOneInput;
+        } else if (playerNum === 1) {
+            inputElement = dom.playerTwoInput;
+        }
+        return function() {
+            const newName = inputElement.value;
+            logic.changePlayerName(playerNum, newName);
+        }
+    }
+
+    function keyPressed(e) {
+        if (e.key === "Enter") {
+            e.target.blur();
+        }
     }
 
     function _renderPlayer() {
@@ -306,6 +332,7 @@ const interface = (function(doc) {
             statusMessage: doc.querySelector("#status-message"),
             playAgain: doc.querySelector("#play-again"),
             resetButton: doc.querySelector("#reset-button"),
+            htmlBody: doc.querySelector("body"),
             cells: Array.from(doc.querySelectorAll(".game-cell"))
         }
     }
@@ -331,5 +358,9 @@ function Player(name, token) {
 
     this.resetScore = function() {
         this.score = 0;
+    }
+
+    this.changeOwnNameTo = function(newName) {
+        this.name = newName;
     }
 }

@@ -19,7 +19,7 @@
   - [ ] Bind events
   - [x] Render the board with classes
   - [x] Render current player
-  - [ ] Get and set player name
+  - [x] Get and set player name
   - [x] Handle a click on a cell
   - [x] Update status message
   - [x] Update player score
