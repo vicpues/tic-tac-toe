@@ -24,9 +24,9 @@
   - [x] Update status message
   - [x] Update player score
   - [ ] Reset player score
-  - [ ] Update current player symbol
+  - [x] Update current player symbol
   - [ ] Highlight winning line
-  - [ ] Play again
+  - [x] Play again
 
 - [ ]   Finishing touches
   - [ ] Improve responsiveness

@@ -162,6 +162,10 @@ const logic = (function() {
         } 
     }
 
+    function resetTurn() {
+        currentTurn = 0;
+    }
+
     function _arrayIsWinner(arr) {
         for (let square of arr) {
             if (square !== getCurrentPlayer().token) {
@@ -176,6 +180,7 @@ const logic = (function() {
         makeMove,
         moveHasWon,
         switchPlayer,
+        resetTurn,
         getScores,
     }
 
@@ -183,6 +188,7 @@ const logic = (function() {
 
 
 const interface = (function(doc) {
+    let roundIsOver = false;
     const dom = _cacheDom();
     _bindEvents();
     renderBoard();
@@ -210,9 +216,15 @@ const interface = (function(doc) {
         for (cell of dom.cells) {
             cell.addEventListener("click", moveEvent);
         };
+        dom.playAgain.addEventListener("click", nextRound);
+        dom.resetButton.addEventListener("click", resetToZero);
     }
 
     function moveEvent(event) {
+        if (roundIsOver) {
+            return;
+        }
+
         const status = logic.makeMove(
             event.target.dataset.x,
             event.target.dataset.y
@@ -230,6 +242,7 @@ const interface = (function(doc) {
 
     function gameEnd(status) {
         let message;
+        roundIsOver = true;
         if (status === WIN) {
             message = `${logic.getCurrentPlayer().name} wins this round!`;
             logic.getCurrentPlayer().addPoint();
@@ -248,6 +261,21 @@ const interface = (function(doc) {
 
     function clearStatus() {
         dom.statusMessage.textContent = "";
+    }
+
+    function nextRound() {
+        if (roundIsOver) {
+            roundIsOver = false;
+            clearStatus();
+            board.resetBoard();
+            logic.resetTurn();
+            renderBoard();
+            _renderPlayer();
+        }
+    }
+
+    function resetToZero() {
+        
     }
 
     function _renderPlayer() {
