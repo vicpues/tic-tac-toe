@@ -182,6 +182,7 @@ const logic = (function() {
         switchPlayer,
         resetTurn,
         getScores,
+        resetScores,
     }
 
 })();
@@ -265,17 +266,23 @@ const interface = (function(doc) {
 
     function nextRound() {
         if (roundIsOver) {
-            roundIsOver = false;
-            clearStatus();
-            board.resetBoard();
-            logic.resetTurn();
-            renderBoard();
-            _renderPlayer();
+            resetRound();
         }
     }
 
     function resetToZero() {
-        
+        logic.resetScores();
+        resetRound();
+    }
+    
+    function resetRound() {
+        roundIsOver = false;
+        board.resetBoard()
+        logic.resetTurn();
+        logic.resetScores();
+        clearStatus();
+        renderBoard();
+        _renderPlayer();
     }
 
     function _renderPlayer() {

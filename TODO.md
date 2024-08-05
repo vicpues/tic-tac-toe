@@ -23,7 +23,7 @@
   - [x] Handle a click on a cell
   - [x] Update status message
   - [x] Update player score
-  - [ ] Reset player score
+  - [x] Reset player score
   - [x] Update current player symbol
   - [ ] Highlight winning line
   - [x] Play again
