@@ -33,5 +33,6 @@
   - [ ] Reduce image jittering on page load
   - [ ] Write readme
   - [ ] Check credits
-  - [ ] Publish live demo
-  - [ ] Link live demo in footer
+  - [ ] Add tab icon
+  - [x] Publish live demo
+  - [x] Link live demo in footer
